@@ -1,12 +1,25 @@
 import React from 'react';
 
-const UserNominations = ({ userNominations }) => {
+const UserNominations = ({ userNominations, setuserNominations }) => {
+  
+  const removeMovie = (movieId) => {
+    const userNominationsCopy = [...userNominations];
+    const index = userNominationsCopy.findIndex( movie => movie.id === movieId);
+    userNominationsCopy.splice(index, 1);
+    setuserNominations(userNominationsCopy);
+  }
+
   const nominations = userNominations.map( movie => {
     return (
       <li key={movie.id}>
         <h3>{movie.title}</h3>
         <p>{movie.year}</p>
-        <button type='button'>X</button>
+        <button 
+          type='button'
+          onClick={() => removeMovie(movie.id)}
+        >
+            X
+        </button>
       </li>
     );
   });
@@ -17,7 +30,12 @@ const UserNominations = ({ userNominations }) => {
       <ul>
         {nominations}
       </ul>
-      <button type='button'>Confirm nominations</button>
+      <button 
+        type='button'
+        
+      >
+        Confirm nominations
+      </button>
     </section>
   );
 };

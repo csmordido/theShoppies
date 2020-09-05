@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
-// import { useCallback } from 'react';
 
-const Results = ({ setuserNominations }) => {
+const Results = ({ setuserNominations, userNominations }) => {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
@@ -45,19 +44,15 @@ const Results = ({ setuserNominations }) => {
               
   }, [term]);
   
-  const nominateMovie = (movie) => {
-    setuserNominations(userNominations => [...userNominations, movie]);
-  }
-
-
-  const movies = results.map(movie => {
+  const movies = results.map( movie => {
     return (
       <li key={movie.id}>
         <h3>{movie.title}</h3>
         <p>{movie.year}</p>
         <button 
+          disabled={userNominations.length === 5 ? true : false}
           type='button' 
-          onClick={() => nominateMovie(movie)}
+          onClick={() => setuserNominations(userNominations => [...userNominations, movie])}
         >
           Nominate
         </button>

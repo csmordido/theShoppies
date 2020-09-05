@@ -24,8 +24,12 @@ const App = () => {
           <Route exact path='/'>
             <Results 
               setuserNominations={setuserNominations}
+              userNominations={userNominations}
             />
-            <UserNominations userNominations={userNominations} />
+            <UserNominations 
+              userNominations={userNominations}
+              setuserNominations={setuserNominations}
+            />
           </Route>
           <Route exact path='/nominations-list'>
             <NominationsList />
