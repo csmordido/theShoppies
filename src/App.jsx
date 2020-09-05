@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Results from './components/Results';
 import NominationsList from './components/NominationsList';
 import UserNominations from './components/UserNominations';
+import Modal from './components/Modal';
 import { 
   HashRouter as Router,
   Route,
@@ -35,6 +36,11 @@ const App = () => {
             <NominationsList />
           </Route>
         </Router>
+        {
+          userNominations.length === 5
+          ? <Modal />
+          : null
+        }
       </main>
     </div>
   )

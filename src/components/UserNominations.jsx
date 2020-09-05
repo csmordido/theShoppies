@@ -27,15 +27,18 @@ const UserNominations = ({ userNominations, setuserNominations }) => {
   return (
     <section>
       <h2>Your Nominations</h2>
-      <ul>
-        {nominations}
-      </ul>
+      {
+        !userNominations.length
+        ? <p>Start nominating five of your favourite movies!</p>
+        : <ul>{nominations}</ul>
+      }
       <button 
+        disabled={userNominations.length === 5 ? false : true}
         type='button'
-        
       >
         Confirm nominations
       </button>
+
     </section>
   );
 };
