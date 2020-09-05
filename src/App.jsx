@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Results from './components/Results';
 import NominationsList from './components/NominationsList';
@@ -10,6 +10,8 @@ import {
 } from 'react-router-dom';
 
 const App = () => {
+  const [userNominations, setuserNominations] = useState([]);
+
   return(
     <div>
       <Header />
@@ -20,8 +22,10 @@ const App = () => {
             <Link to='/nominations-list'>Nominations List</Link>
           </nav>
           <Route exact path='/'>
-            <Results />
-            <UserNominations />
+            <Results 
+              setuserNominations={setuserNominations}
+            />
+            <UserNominations userNominations={userNominations} />
           </Route>
           <Route exact path='/nominations-list'>
             <NominationsList />

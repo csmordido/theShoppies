@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+// import { useCallback } from 'react';
 
-const Results = () => {
+const Results = ({ setuserNominations }) => {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
-  
+
   useEffect(() => {
     
     const getMovies = async () => {
@@ -22,7 +23,12 @@ const Results = () => {
         const resultsArr = [];
             
         response.data.Search.forEach( movie => {
-          resultsArr.push(movie);
+          const movieData = {
+            title: movie.Title,
+            year: movie.Year,
+            id: movie.imdbID
+          }
+          resultsArr.push(movieData);
         });
         
         setResults(resultsArr);
@@ -38,9 +44,25 @@ const Results = () => {
     }
               
   }, [term]);
+  
+  const nominateMovie = (movie) => {
+    setuserNominations(userNominations => [...userNominations, movie]);
+  }
+
 
   const movies = results.map(movie => {
-    return <li>{movie.Title}</li>
+    return (
+      <li key={movie.id}>
+        <h3>{movie.title}</h3>
+        <p>{movie.year}</p>
+        <button 
+          type='button' 
+          onClick={() => nominateMovie(movie)}
+        >
+          Nominate
+        </button>
+      </li>
+    )
   });
 
   return (

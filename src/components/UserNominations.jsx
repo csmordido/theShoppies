@@ -1,15 +1,21 @@
 import React from 'react';
 
-const UserNominations = () => {
+const UserNominations = ({ userNominations }) => {
+  const nominations = userNominations.map( movie => {
+    return (
+      <li key={movie.id}>
+        <h3>{movie.title}</h3>
+        <p>{movie.year}</p>
+        <button type='button'>X</button>
+      </li>
+    );
+  });
+
   return (
     <section>
       <h2>Your Nominations</h2>
       <ul>
-        <li>Nominations to confirm</li>
-        <li>Nominations to confirm</li>
-        <li>Nominations to confirm</li>
-        <li>Nominations to confirm</li>
-        <li>Nominations to confirm</li>
+        {nominations}
       </ul>
       <button type='button'>Confirm nominations</button>
     </section>
