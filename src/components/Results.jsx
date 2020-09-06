@@ -49,17 +49,29 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed }) => {
     setuserNominations(userNominations => [...userNominations, movie]);
   }
 
+  const isUserNominated = (movieId) => {
+    return userNominations.find( movie => movie.id === movieId );
+  }
+
   const movies = results.map( movie => {
     return (
       <li key={movie.id}>
         <h3>{movie.title}</h3>
         <p>{movie.year}</p>
         <button 
-          disabled={userNominations.length === 5 ? true : false}
+          disabled={
+            userNominations.length === 5 || isUserNominated(movie.id)
+            ? true 
+            : false
+          }
           type='button' 
           onClick={() => nominateMovie(movie)}
         >
-          Nominate
+          {
+            !isUserNominated(movie.id)
+            ? 'Nominate'
+            : 'Nominated'
+          }
         </button>
       </li>
     )

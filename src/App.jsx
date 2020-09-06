@@ -21,7 +21,7 @@ const App = () => {
         <Router>
           <nav>
             <Link to='/'>Home</Link>
-            <Link to='/nominations-list'>Nominations List</Link>
+            <Link to='/nominations-list'>Nominated Movies</Link>
           </nav>
           <Route exact path='/'>
             <Results 
