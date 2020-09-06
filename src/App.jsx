@@ -15,8 +15,8 @@ const App = () => {
   const [nominationsList, setNominationsList] = useState([]);
 
   useEffect(() => {
-    const nominationsList = localStorage.getItem('nominations');
-    setNominationsList(JSON.parse(nominationsList));
+    const nominations = localStorage.getItem('nominations');
+    setNominationsList(JSON.parse(nominations));
   }, [])
 
   return(

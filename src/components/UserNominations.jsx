@@ -1,15 +1,15 @@
 import React from 'react';
 
 const UserNominations = ({ userNominations, setuserNominations }) => {
-  
+  const userNominationsCopy = [...userNominations];
+
   const removeMovie = (movieId) => {
-    const userNominationsCopy = [...userNominations];
     const index = userNominationsCopy.findIndex( movie => movie.id === movieId);
     userNominationsCopy.splice(index, 1);
     setuserNominations(userNominationsCopy);
   }
 
-  const nominations = userNominations.map( movie => {
+  const nominations = userNominationsCopy.map( movie => {
     return (
       <li key={movie.id}>
         <h3>{movie.title}</h3>
@@ -25,8 +25,15 @@ const UserNominations = ({ userNominations, setuserNominations }) => {
   });
 
   const confirmNominations = () => {
-    localStorage.setItem('nominations', JSON.stringify(userNominations));
-  }
+    const nominations = localStorage.getItem('nominations');
+
+    if (nominations) {
+      const parsedNominations = JSON.parse(nominations)
+      localStorage.setItem('nominations', JSON.stringify([...parsedNominations, ...userNominations]));
+    } else {
+      localStorage.setItem('nominations', JSON.stringify(userNominations));
+    };
+  };
 
   return (
     <section>
