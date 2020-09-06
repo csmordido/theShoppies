@@ -15,9 +15,14 @@ const App = () => {
   const [nominationsList, setNominationsList] = useState([]);
 
   useEffect(() => {
-    const nominations = localStorage.getItem('nominations');
-    setNominationsList(JSON.parse(nominations));
-  }, [])
+      const nominations = localStorage.getItem('nominations');
+      setNominationsList(JSON.parse(nominations));
+
+      // window.addEventListener('storage',  (e) => {
+      //   console.log(e, 'storage updated');
+      // });
+
+  }, []);
 
   return(
     <div>

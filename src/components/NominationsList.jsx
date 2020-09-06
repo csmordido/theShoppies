@@ -8,7 +8,6 @@ const NominationsList = ({ nominationsList }) => {
 
     if (nominations) {
       const parsedNominations = JSON.parse(nominations);
-      console.log('x', parsedNominations);
       const index = parsedNominations.findIndex( movie => movie.id === movieId );
       parsedNominations.splice(index, 1);
       localStorage.setItem('nominations', JSON.stringify(parsedNominations));
