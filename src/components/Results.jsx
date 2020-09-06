@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
 
-const Results = ({ setuserNominations, userNominations }) => {
+const Results = ({ setuserNominations, userNominations, setIsConfirmed }) => {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
@@ -44,6 +44,11 @@ const Results = ({ setuserNominations, userNominations }) => {
               
   }, [term]);
   
+  const nominateMovie = (movie) => {
+    setIsConfirmed(true ? false : null);
+    setuserNominations(userNominations => [...userNominations, movie]);
+  }
+
   const movies = results.map( movie => {
     return (
       <li key={movie.id}>
@@ -52,7 +57,7 @@ const Results = ({ setuserNominations, userNominations }) => {
         <button 
           disabled={userNominations.length === 5 ? true : false}
           type='button' 
-          onClick={() => setuserNominations(userNominations => [...userNominations, movie])}
+          onClick={() => nominateMovie(movie)}
         >
           Nominate
         </button>

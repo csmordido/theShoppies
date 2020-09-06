@@ -1,33 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const NominationsList = ({ nominationsList }) => {
-  const nominationsListCopy = [...nominationsList]
+const NominationsList = ({ isConfirmed }) => {
+  const [nominationsList, setNominationsList] = useState([]);
 
-  const removeMovie = (movieId) => {
+  useEffect(() => {
     const nominations = localStorage.getItem('nominations');
+    setNominationsList(JSON.parse(nominations));
+  }, [isConfirmed]);
 
-    if (nominations) {
-      const parsedNominations = JSON.parse(nominations);
-      const index = parsedNominations.findIndex( movie => movie.id === movieId );
-      parsedNominations.splice(index, 1);
-      localStorage.setItem('nominations', JSON.stringify(parsedNominations));
+  const displayNominations = () => {
+    if (nominationsList) {
+      const nominationsListCopy = [...nominationsList];
+
+      return nominationsListCopy.map( movie => {
+        return (
+          <li key={movie.id}>
+            <h3>{movie.title}</h3>
+            <p>{movie.year}</p>
+          </li>
+        );
+      });
     }
   }
 
-  const nominations = nominationsListCopy.map( movie => {
-    return (
-      <li key={movie.id}>
-        <h3>{movie.title}</h3>
-        <p>{movie.year}</p>
-        <button 
-          type='button'
-          onClick={() => removeMovie(movie.id)}
-        >
-            X
-        </button>
-      </li>
-    );
-  });
+  const nominations = displayNominations();
 
   return (
     <>

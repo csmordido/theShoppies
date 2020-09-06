@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserNominations = ({ userNominations, setuserNominations }) => {
+const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }) => {
   const userNominationsCopy = [...userNominations];
 
   const removeMovie = (movieId) => {
@@ -33,6 +33,9 @@ const UserNominations = ({ userNominations, setuserNominations }) => {
     } else {
       localStorage.setItem('nominations', JSON.stringify(userNominations));
     };
+    
+    setuserNominations([]);
+    setIsConfirmed(true);
   };
 
   return (
