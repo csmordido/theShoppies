@@ -24,6 +24,10 @@ const UserNominations = ({ userNominations, setuserNominations }) => {
     );
   });
 
+  const confirmNominations = () => {
+    localStorage.setItem('nominations', JSON.stringify(userNominations));
+  }
+
   return (
     <section>
       <h2>Your Nominations</h2>
@@ -35,6 +39,7 @@ const UserNominations = ({ userNominations, setuserNominations }) => {
       <button 
         disabled={userNominations.length === 5 ? false : true}
         type='button'
+        onClick={confirmNominations}
       >
         Confirm nominations
       </button>

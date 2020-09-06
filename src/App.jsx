@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Results from './components/Results';
 import NominationsList from './components/NominationsList';
@@ -12,6 +12,12 @@ import {
 
 const App = () => {
   const [userNominations, setuserNominations] = useState([]);
+  const [nominationsList, setNominationsList] = useState([]);
+
+  useEffect(() => {
+    const nominationsList = localStorage.getItem('nominations');
+    setNominationsList(JSON.parse(nominationsList));
+  }, [])
 
   return(
     <div>
@@ -33,7 +39,7 @@ const App = () => {
             />
           </Route>
           <Route exact path='/nominations-list'>
-            <NominationsList />
+            <NominationsList nominationsList={nominationsList} />
           </Route>
         </Router>
         {
