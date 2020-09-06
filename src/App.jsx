@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Results from './components/Results';
 import NominationsList from './components/NominationsList';
@@ -12,7 +12,13 @@ import {
 
 const App = () => {
   const [userNominations, setuserNominations] = useState([]);
+  const [nominationsList, setNominationsList] = useState([]);
   const [isConfirmed, setIsConfirmed] = useState(false);
+
+  useEffect(() => {
+    const nominations = localStorage.getItem('nominations');
+    setNominationsList(JSON.parse(nominations));
+  }, [isConfirmed]);
 
   return(
     <div>
@@ -28,6 +34,7 @@ const App = () => {
               setuserNominations={setuserNominations}
               userNominations={userNominations}
               setIsConfirmed={setIsConfirmed}
+              nominationsList={nominationsList}
             />
             <UserNominations 
               userNominations={userNominations}
@@ -36,9 +43,11 @@ const App = () => {
             />
           </Route>
           <Route exact path='/nominations-list'>
-            
-              <NominationsList isConfirmed={isConfirmed} />
-             
+            <NominationsList 
+              
+              nominationsList={nominationsList}
+              
+            />
           </Route>
         </Router>
         {

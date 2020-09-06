@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-const NominationsList = ({ isConfirmed }) => {
-  const [nominationsList, setNominationsList] = useState([]);
-
-  useEffect(() => {
-    const nominations = localStorage.getItem('nominations');
-    setNominationsList(JSON.parse(nominations));
-  }, [isConfirmed]);
+const NominationsList = ({ nominationsList }) => {
 
   const displayNominations = () => {
     if (nominationsList) {
