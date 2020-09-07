@@ -8,6 +8,11 @@
   margin-bottom: 10px;
 }
 
+.results li img {
+  max-width: 300px;
+  margin: 0 auto 5px auto;
+}
+
 .results p {
   font-size: 0.9rem;
   line-height: 1.5;

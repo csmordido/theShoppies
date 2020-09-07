@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
 import '../styles/results.css';
+import noPoster from '../assets/no-poster.jpg'; 
 
 const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominationsList }) => {
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
   useEffect(() => {
-    
     const getMovies = async () => {
       try {
         const response = await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`, {
@@ -27,7 +27,8 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
             const movieData = {
               title: movie.Title,
               year: movie.Year,
-              id: movie.imdbID
+              id: movie.imdbID,
+              poster: movie.Poster
             }
             resultsArr.push(movieData);
           });
@@ -37,7 +38,6 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
             
       } catch (error) {
         console.log(error);
-        
       };
     }; 
 
@@ -50,7 +50,6 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
         clearInterval(delay);
       }
     }
-              
   }, [term]);
   
   const nominateMovie = (movie) => {
@@ -66,18 +65,14 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
 
   const isNominated = (movieId) => {
     if (nominationsList) {
-      const nominated =  nominationsList.find( movie => movie.id === movieId );
-      if (nominated) {
-        return true;
-      } else {
-        return false;
-      }
+      return nominationsList.find( movie => movie.id === movieId );
     }
   }
 
   const movies = results.map( movie => {
     return (
       <li key={movie.id}>
+        <img src={(movie.poster === "N/A") ? noPoster : movie.poster} alt={movie.title}/>
         <h3>{movie.title}</h3>
         <p>{movie.year}</p>
         <button 
