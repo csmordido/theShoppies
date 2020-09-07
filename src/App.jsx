@@ -47,9 +47,7 @@ const App = () => {
           </Route>
           <Route exact path='/nominations-list'>
             <NominationsList 
-              
               nominationsList={nominationsList}
-              
             />
           </Route>
         </Router>

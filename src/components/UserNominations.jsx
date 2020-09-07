@@ -45,11 +45,12 @@ const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }
       {
         !userNominations.length
         ? <p>Start nominating five of your favourite movies!</p>
-        : <ul className='results'>{nominations}</ul>
+        : <ul className='results userNoms'>{nominations}</ul>
       }
       <button 
         disabled={userNominations.length === 5 ? false : true}
         type='button'
+        className='confirmBtn'
         onClick={confirmNominations}
       >
         Confirm nominations

@@ -1,0 +1,11 @@
+.modal {
+  color: white;
+  background-color: var(--color-green);
+  padding: 15px 10px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+  letter-spacing: 1.1px;
+}
