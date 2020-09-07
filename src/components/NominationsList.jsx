@@ -20,12 +20,12 @@ const NominationsList = ({ nominationsList }) => {
   const nominations = displayNominations();
 
   return (
-    <>
+    <section>
       <h2>Nominated Movies</h2>
       <ul>
         {nominations}
       </ul>
-    </>
+    </section>
   );
 };
 

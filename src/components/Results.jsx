@@ -18,17 +18,19 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
             page: 1
           }
         });
-
+        
         const resultsArr = [];
-            
-        response.data.Search.forEach( movie => {
-          const movieData = {
-            title: movie.Title,
-            year: movie.Year,
-            id: movie.imdbID
-          }
-          resultsArr.push(movieData);
-        });
+
+        if (response.data.Search) { 
+          response.data.Search.forEach( movie => {
+            const movieData = {
+              title: movie.Title,
+              year: movie.Year,
+              id: movie.imdbID
+            }
+            resultsArr.push(movieData);
+          });
+        }
         
         setResults(resultsArr);
             
@@ -97,13 +99,13 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
   });
 
   return (
-    <>
+    <div>
       <SearchBar setTerm={setTerm} term={term}/>
       <h2>Results for "{term}"</h2>
       <ul>
         {movies}
       </ul>
-    </>
+    </div>
   );
 };
 

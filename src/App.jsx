@@ -19,7 +19,7 @@ const App = () => {
     const nominations = localStorage.getItem('nominations');
     setNominationsList(JSON.parse(nominations));
   }, [isConfirmed]);
-  
+
   return(
     <div>
       <Header />
@@ -30,17 +30,19 @@ const App = () => {
             <Link to='/nominations-list'>Nominated Movies</Link>
           </nav>
           <Route exact path='/'>
-            <Results 
-              setuserNominations={setuserNominations}
-              userNominations={userNominations}
-              setIsConfirmed={setIsConfirmed}
-              nominationsList={nominationsList}
-            />
-            <UserNominations 
-              userNominations={userNominations}
-              setuserNominations={setuserNominations}
-              setIsConfirmed={setIsConfirmed}
-            />
+            <section>
+              <Results 
+                setuserNominations={setuserNominations}
+                userNominations={userNominations}
+                setIsConfirmed={setIsConfirmed}
+                nominationsList={nominationsList}
+              />
+              <UserNominations 
+                userNominations={userNominations}
+                setuserNominations={setuserNominations}
+                setIsConfirmed={setIsConfirmed}
+              />
+            </section>
           </Route>
           <Route exact path='/nominations-list'>
             <NominationsList 

@@ -33,13 +33,13 @@ const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }
     } else {
       localStorage.setItem('nominations', JSON.stringify(userNominations));
     };
-    
+
     setuserNominations([]);
     setIsConfirmed(true);
   };
 
   return (
-    <section>
+    <div>
       <h2>Your Nominations</h2>
       {
         !userNominations.length
@@ -54,7 +54,7 @@ const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }
         Confirm nominations
       </button>
 
-    </section>
+    </div>
   );
 };
 
