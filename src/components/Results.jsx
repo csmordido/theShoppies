@@ -50,12 +50,20 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
   }
 
   const isUserNominated = (movieId) => {
-    return userNominations.find( movie => movie.id === movieId );
+    if (userNominations) {
+      return userNominations.find( movie => movie.id === movieId );
+    }
   }
 
   const isNominated = (movieId) => {
-    const nominated =  nominationsList.find( movie => movie.id === movieId );
-    console.log(nominated);
+    if (nominationsList) {
+      const nominated =  nominationsList.find( movie => movie.id === movieId );
+      if (nominated) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
   const movies = results.map( movie => {
@@ -73,7 +81,7 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
           onClick={() => nominateMovie(movie)}
         >
           {
-            !isUserNominated(movie.id)
+            !isUserNominated(movie.id) && !isNominated(movie.id)
             ? 'Nominate'
             : 'Nominated'
           }
