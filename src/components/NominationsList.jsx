@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/usernominations.css';
 
 const NominationsList = ({ nominationsList }) => {
 
@@ -10,7 +11,7 @@ const NominationsList = ({ nominationsList }) => {
         return (
           <li key={movie.id}>
             <h3>{movie.title}</h3>
-            <p>{movie.year}</p>
+            <p className='nomsListYear'>{movie.year}</p>
           </li>
         );
       });
@@ -20,9 +21,9 @@ const NominationsList = ({ nominationsList }) => {
   const nominations = displayNominations();
 
   return (
-    <section>
+    <section className='wrapper'>
       <h2>Nominated Movies</h2>
-      <ul>
+      <ul className='results userNoms'>
         {nominations}
       </ul>
     </section>
