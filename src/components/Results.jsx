@@ -11,7 +11,7 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
     
     const getMovies = async () => {
       try {
-        const response = await axios.get(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`, {
+        const response = await axios.get(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`, {
           params: {
             s: term,
             type: 'movie',
