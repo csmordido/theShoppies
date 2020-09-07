@@ -5,7 +5,8 @@
 .results li {
   padding: 10px;
   border: 1px solid var(--color-green);
-  margin-bottom: 10px;
+  margin: 0 auto 10px auto;
+  max-width: 347px;
 }
 
 .results li img {
@@ -19,15 +20,29 @@
   margin-bottom: 10px;
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 720px) { 
   .results {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: flex-start;
+    max-width: 708px;
+    margin: 0 auto;
   }
 
   .results li {
-    flex: 0 0 calc(50% - 5px);
+    flex: 0 0 calc(347px - 5px);
+  }
+}
+
+@media (min-width: 800px) {
+  .results li {
+    margin: 0 5px 10px 5px
+  }
+}
+
+@media (min-width: 1200px) {
+  .results {
+    max-width: 1057px;
   }
 }
