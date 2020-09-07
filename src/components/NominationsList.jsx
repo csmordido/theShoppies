@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/usernominations.css';
+import noPoster from '../assets/no-poster.jpg'; 
 
 const NominationsList = ({ nominationsList }) => {
 
@@ -10,6 +11,7 @@ const NominationsList = ({ nominationsList }) => {
       return nominationsListCopy.map( movie => {
         return (
           <li key={movie.id}>
+            <img src={(movie.poster === "N/A") ? noPoster : movie.poster} alt={movie.title}/>
             <h3>{movie.title}</h3>
             <p className='nomsListYear'>{movie.year}</p>
           </li>
