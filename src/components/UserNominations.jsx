@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/usernominations.css';
 
 const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }) => {
   const userNominationsCopy = [...userNominations];
@@ -39,12 +40,12 @@ const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }
   };
 
   return (
-    <div>
+    <div className='userNomsContainer'>
       <h2>Your Nominations</h2>
       {
         !userNominations.length
         ? <p>Start nominating five of your favourite movies!</p>
-        : <ul>{nominations}</ul>
+        : <ul className='results'>{nominations}</ul>
       }
       <button 
         disabled={userNominations.length === 5 ? false : true}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+import '../styles/results.css';
 
 const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominationsList }) => {
   const [term, setTerm] = useState('');
@@ -99,10 +100,10 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
   });
 
   return (
-    <div>
+    <div className='resultsContainer'>
       <SearchBar setTerm={setTerm} term={term}/>
       <h2>Results for "{term}"</h2>
-      <ul>
+      <ul className='results'>
         {movies}
       </ul>
     </div>

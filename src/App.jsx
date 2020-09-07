@@ -26,12 +26,12 @@ const App = () => {
       <Header />
       <main>
         <Router>
-          <nav className='mainNav'>
+          <nav className='mainNav wrapper'>
             <Link to='/'>Home</Link>
             <Link to='/nominations-list'>Nominated Movies</Link>
           </nav>
           <Route exact path='/'>
-            <section>
+            <section className='wrapper'>
               <Results 
                 setuserNominations={setuserNominations}
                 userNominations={userNominations}

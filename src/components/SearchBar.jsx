@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/searchbar.css';
 
 const SearchBar = ({ setTerm, term }) => {
   return (
-    <form>
+    <form className='searchForm'>
       <label className='visuallyHidden' htmlFor='search'>Search for a movie</label>
       <input 
         type='text' 
