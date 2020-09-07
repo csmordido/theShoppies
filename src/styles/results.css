@@ -1,5 +1,5 @@
 .results {
-  min-height: 30vh;
+  min-height: 20vh;
 }
 
 .results li {
@@ -12,4 +12,17 @@
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 10px;
+}
+
+@media (min-width: 768px) { 
+  .results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+  }
+
+  .results li {
+    flex: 0 0 calc(50% - 5px);
+  }
 }

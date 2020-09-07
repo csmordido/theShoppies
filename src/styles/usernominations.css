@@ -1,6 +1,5 @@
 .userNomsContainer {
-  margin-top: 30px ;
-  padding-bottom: 50px;
+  margin: 50px 0;
 }
 
 .userNomsContainer > p {
@@ -22,9 +21,17 @@
 
 .confirmBtn {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
+  display: block;
 } 
 
 p.nomsListYear {
   margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .confirmBtn {
+    width: 40%;
+    margin: 10px auto 0 auto;
+  }
 }

@@ -44,7 +44,7 @@ const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }
       <h2>Your Nominations</h2>
       {
         !userNominations.length
-        ? <p>Start nominating five of your favourite movies!</p>
+        ? <p>Start your search and nominate five of your favourite movies for The Shoppies Awards!</p>
         : <ul className='results userNoms'>{nominations}</ul>
       }
       <button 

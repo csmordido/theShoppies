@@ -1,4 +1,5 @@
 .modal {
+  width: 100%;
   color: white;
   background-color: var(--color-green);
   padding: 15px 10px;
@@ -8,4 +9,10 @@
   left: 0;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
   letter-spacing: 1.1px;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    padding: 30px 10px;
+  }
 }

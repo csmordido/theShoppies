@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header>
       <h1>The Shoppies</h1>
-      <p>Nominate your favourite movies!</p>
+      <p>Movie awards for entrepreneurs</p>
     </header>
   );
 };
