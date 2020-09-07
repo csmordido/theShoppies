@@ -39,7 +39,13 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
     }; 
 
     if (term) {
+      const delay = setTimeout(() => {
         getMovies();
+      }, 200);
+
+      return () => {
+        clearInterval(delay);
+      }
     }
               
   }, [term]);
