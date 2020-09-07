@@ -1,3 +1,15 @@
-.pageTitle {
-  color: var(--color-green);
+header {
+  text-align: center;
+  background-color: var(--color-green);
+  color: white;
+}
+
+header h1 {
+  font: 700 2.5rem var(--font);
+  padding: 50px 0 30px 0;
+}
+
+header p {
+  padding: 0 10px 50px 10px;
+  font: 400 1.3rem var(--font);
 }

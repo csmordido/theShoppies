@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import './styles/nav.css';
 
 const App = () => {
   const [userNominations, setuserNominations] = useState([]);
@@ -25,7 +26,7 @@ const App = () => {
       <Header />
       <main>
         <Router>
-          <nav>
+          <nav className='mainNav'>
             <Link to='/'>Home</Link>
             <Link to='/nominations-list'>Nominated Movies</Link>
           </nav>
