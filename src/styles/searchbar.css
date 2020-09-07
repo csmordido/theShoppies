@@ -14,10 +14,14 @@
 }
 
 @media (min-width: 768px) {
-
   .searchForm input {
     max-width: 70%;
     margin: 0 auto;
   }
+}
 
+@media (min-width: 940px) {
+  .searchForm input:focus {
+    border: 2px solid var(--color-green);
+  }
 }
