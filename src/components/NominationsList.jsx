@@ -21,7 +21,7 @@ const NominationsList = ({ nominationsList }) => {
   const nominations = displayNominations();
 
   return (
-    <section className='wrapper'>
+    <section className='wrapper nomsList'>
       <h2>Nominated Movies</h2>
       <ul className='results userNoms'>
         {nominations}

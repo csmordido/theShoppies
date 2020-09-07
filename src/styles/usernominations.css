@@ -25,6 +25,11 @@
   display: block;
 } 
 
+.nomsList {
+  min-height: 56vh;
+  padding-bottom: 50px;
+}
+
 p.nomsListYear {
   margin-bottom: 0;
 }

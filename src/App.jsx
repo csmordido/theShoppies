@@ -4,6 +4,7 @@ import Results from './components/Results';
 import NominationsList from './components/NominationsList';
 import UserNominations from './components/UserNominations';
 import Modal from './components/Modal';
+import Footer from './components/Footer';
 import { 
   HashRouter as Router,
   Route,
@@ -57,6 +58,7 @@ const App = () => {
           : null
         }
       </main>
+      <Footer />
     </div>
   )
 }
