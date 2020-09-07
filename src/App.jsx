@@ -21,7 +21,7 @@ const App = () => {
     const nominations = localStorage.getItem('nominations');
     setNominationsList(JSON.parse(nominations));
   }, [isConfirmed]);
-
+  
   return(
     <div>
       <Header />
