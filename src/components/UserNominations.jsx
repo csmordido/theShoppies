@@ -39,12 +39,17 @@ const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }
     setIsConfirmed(true);
   };
 
+  const greenText = {
+    color: 'var(--color-green)',
+    fontWeight: 500
+  }
+
   return (
     <div className='userNomsContainer'>
       <h2>Your Nominations</h2>
       {
         !userNominations.length
-        ? <p>Start your search and nominate five of your favourite movies for The Shoppies Awards!</p>
+        ? <p>Start your search and nominate <span style={greenText}>five</span> of your favourite movies for The Shoppies Awards!</p>
         : <ul className='results userNoms'>{nominations}</ul>
       }
       <button 
