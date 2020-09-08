@@ -25,9 +25,12 @@ const UserNominations = ({ userNominations, setuserNominations, setIsConfirmed }
     );
   });
 
+  // function to store nominated movies in the local storage
   const confirmNominations = () => {
+    // get items from the local storage
     const nominations = localStorage.getItem('nominations');
 
+    // if there is data, combine them with the newly user nominated movies and store the combined array in the local storage
     if (nominations) {
       const parsedNominations = JSON.parse(nominations)
       localStorage.setItem('nominations', JSON.stringify([...parsedNominations, ...userNominations]));

@@ -5,6 +5,7 @@ import '../styles/results.css';
 import noPoster from '../assets/no-poster.jpg'; 
 
 const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominationsList }) => {
+
   const [term, setTerm] = useState('');
   const [results, setResults] = useState([]);
 
@@ -22,6 +23,7 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
         
         const resultsArr = [];
 
+        // push each movie object into the resultsArr only if there are found movies
         if (response.data.Search) { 
           response.data.Search.forEach( movie => {
             const movieData = {
@@ -41,7 +43,9 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
       };
     }; 
 
+    // only call the getMovies function if the user has started typing
     if (term) {
+      // with 200ms interval
       const delay = setTimeout(() => {
         getMovies();
       }, 200);
@@ -57,12 +61,14 @@ const Results = ({ setuserNominations, userNominations, setIsConfirmed, nominati
     setuserNominations(userNominations => [...userNominations, movie]);
   }
 
+  // function to check if movie in the result state is also in the userNominations state
   const isUserNominated = (movieId) => {
     if (userNominations) {
       return userNominations.find( movie => movie.id === movieId );
     }
   }
 
+  // function to check if movie in the result state is also in the nominationsList state
   const isNominated = (movieId) => {
     if (nominationsList) {
       return nominationsList.find( movie => movie.id === movieId );

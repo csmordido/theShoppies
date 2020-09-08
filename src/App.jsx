@@ -13,6 +13,7 @@ import {
 import './styles/nav.css';
 
 const App = () => {
+  
   const [userNominations, setuserNominations] = useState([]);
   const [nominationsList, setNominationsList] = useState([]);
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -23,7 +24,7 @@ const App = () => {
   }, [isConfirmed]);
   
   return(
-    <div>
+    <>
       <Header />
       <main>
         <Router>
@@ -59,7 +60,7 @@ const App = () => {
         }
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
 
